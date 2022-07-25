@@ -1,8 +1,8 @@
 name: UI Integration tests runner
 on:
   workflow_dispatch:  
-  jobs:
+jobs:
     run-tests
-  steps:
-      -name: Installing mysql
-      -uses: ./.github/workflows/install-mysql
+      steps:
+        -name: Installing mysql
+        -uses: ./.github/workflows/install-mysql

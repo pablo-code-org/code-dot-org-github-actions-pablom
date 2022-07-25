@@ -4,5 +4,5 @@ on:
 jobs:
     run-tests
       steps:
-        -name: Installing mysql
-        -uses: ./.github/workflows/install-mysql
+        - name: Installing mysql
+        - uses: ./.github/workflows/install-mysql

@@ -9,4 +9,4 @@ jobs:
         product: ['dashboard', 'pegasus', 'shared', 'lib', 'bin_i18n']
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 {{$matrix.product}}"
+      - run: echo "🎉 ${{matrix.product}}"

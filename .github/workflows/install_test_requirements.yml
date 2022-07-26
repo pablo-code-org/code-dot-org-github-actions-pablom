@@ -1,8 +1,16 @@
 name: Test installer
 on: workflow_call
-  
+jobs:
+  install-requirements:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start MySQL
+        run: sudo /etc/init.d/mysql start
+      - name: Set mysql root password
+        run: echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';" | sudo mysql -uroot -proot
+
       - name: Checkout code
-        uses: actions/checkout@v3        
+        uses: actions/checkout@v3            
       - name: Setup locals
         run: |
           echo "
@@ -51,10 +59,4 @@ on: workflow_call
         run: bundle exec rake build
 
       - name: Rake run UI tests
-        run: bundle exec rake test:changed:dashboard --trace
-
-  printing-exit:
-    needs: run-ui-tests
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Good bye"        
+        run: bundle exec rake test:changed:dashboard --trace     

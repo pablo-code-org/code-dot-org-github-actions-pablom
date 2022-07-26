@@ -10,7 +10,6 @@ jobs:
       RACK_ENV: test
       DISABLE_SPRING: 1
       
-    runs-on: ubuntu-latest
     steps:    
       - name: Start MySQL
         run: sudo /etc/init.d/mysql start

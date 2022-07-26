@@ -11,12 +11,11 @@ jobs:
         product: ['dashboard', 'pegasus', 'shared', 'lib', 'bin_i18n']
     runs-on: ubuntu-latest
     steps:
-      - run: echo "::set-output name=matrix::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"    
       - run: echo "::set-output name=matrix::{\"project\":$$}"
   use-output:
     needs: validate-changes-on-repo
     strategy:
-      matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
+      matrix: ${{fromJson(needs.validate-changes-on-repo.outputs.matrix)}}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello"

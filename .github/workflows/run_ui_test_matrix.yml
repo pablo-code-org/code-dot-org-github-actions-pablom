@@ -11,7 +11,7 @@ jobs:
         product: ['dashboard', 'pegasus', 'shared', 'lib', 'bin_i18n']
     runs-on: ubuntu-latest
     steps:
-      - run: echo "::set-output name=matrix::{\"project\":$$}"
+      - run: echo "::set-output name=matrix::{\"project\":".$$."}"
   use-output:
     needs: validate-changes-on-repo
     strategy:

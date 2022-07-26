@@ -7,7 +7,7 @@ jobs:
   run-ui-tests:
     runs-on: ubuntu-latest
     steps:
-      - run: "/Users/pablom/code-dot-org/docker/ui_tests.sh"
+      - run: bundle exec rake circle:run_tests --trace
   printing-exit:
     runs-on: ubuntu-latest
     steps:

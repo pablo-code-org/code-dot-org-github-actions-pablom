@@ -49,6 +49,7 @@ jobs:
       - name: Install packages
         run: |
           sudo apt-get update
+          sudo apt-get -y install libmagickwand-dev imagemagick ghostscript pdftk enscript          
         
       - name: Rake Install
         run: bundle exec rake install

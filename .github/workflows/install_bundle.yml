@@ -1,8 +1,0 @@
-name: Rake installer
-on: workflow_call
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Rake
-        run: bundle exec rake install

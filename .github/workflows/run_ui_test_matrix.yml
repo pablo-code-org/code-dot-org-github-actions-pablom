@@ -1,0 +1,12 @@
+
+name: Run UI Test Parallel
+on: workflow_dispatch
+jobs:  
+  validate-changes-on-repo:
+    strategy: 
+      matrix:
+        environment: [ubuntu-latest]
+        product: ['dashboard', 'pegasus', 'shared', 'lib', 'bin_i18n']
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 {{matrix.product}}"

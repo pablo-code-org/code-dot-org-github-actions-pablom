@@ -5,6 +5,8 @@ jobs:
   run-ui-tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: install-mysql
         uses: ./.github/workflows/install_mysql.yml
       - name: install-ruby

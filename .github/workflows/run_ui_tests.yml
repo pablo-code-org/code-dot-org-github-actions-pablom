@@ -1,7 +1,10 @@
-name: UI Integration tests runner
+name: Deploy app
 on:
   workflow_dispatch:
 jobs:
-  install-mysql:
+  install-pre-requisites:
+    uses: ./.github/workflows/install-mysql
+  printing-exit:
+    runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/install-mysql
+      - run: echo "Good bye"

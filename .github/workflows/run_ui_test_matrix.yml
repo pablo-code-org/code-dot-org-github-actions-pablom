@@ -4,7 +4,7 @@ on: workflow_dispatch
 jobs:  
   validate-changes-on-repo:
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}  
+      matrix: ${{ steps.validate-changes-on-repo.outputs.matrix }}  
     strategy: 
       matrix:
         environment: [ubuntu-latest]

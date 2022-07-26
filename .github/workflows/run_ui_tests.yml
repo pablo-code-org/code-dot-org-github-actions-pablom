@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   install-pre-requisites:
-    uses: ./.github/workflows/install-mysql.yml
+    uses: ./.github/workflows/install_mysql.yml
   printing-exit:
     runs-on: ubuntu-latest
     steps:

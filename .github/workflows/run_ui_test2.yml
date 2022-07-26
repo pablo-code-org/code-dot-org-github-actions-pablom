@@ -46,7 +46,9 @@ jobs:
           ruby-version: 2.5
           bundler-cache: true
           
-
+      - name: Install packages
+        run: |
+          sudo apt-get update
         
       - name: Rake Install
         run: bundle exec rake install

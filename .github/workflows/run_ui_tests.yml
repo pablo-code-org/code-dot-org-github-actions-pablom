@@ -4,6 +4,10 @@ on:
 jobs:
   install-pre-requisites:
     uses: ./.github/workflows/install_mysql.yml
+  run-ui-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: "/Users/pablom/code-dot-org/docker/ui_tests.sh"
   printing-exit:
     runs-on: ubuntu-latest
     steps:

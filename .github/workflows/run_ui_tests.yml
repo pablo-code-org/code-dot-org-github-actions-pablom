@@ -2,8 +2,10 @@ name: Deploy app
 on:
   workflow_dispatch:
 jobs:
-  install-pre-requisites:
+  install-mysql:
     uses: ./.github/workflows/install_mysql.yml
+  install-rake:
+    uses: ./.github/workflows/install_rake.yml
   run-ui-tests:
     runs-on: ubuntu-latest
     steps:

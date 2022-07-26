@@ -7,6 +7,7 @@ jobs:
   install-rake:
     uses: ./.github/workflows/install_rake.yml
   run-ui-tests:
+    needs: [install-mysql, install-rake]
     runs-on: ubuntu-latest
     steps:
       - run: bundle exec rake circle:run_tests --trace

@@ -2,19 +2,19 @@ name: Run UI tests
 on:
   workflow_dispatch:
 jobs:
-  install-mysql:
-    uses: ./.github/workflows/install_mysql.yml
-  install-ruby:
-    uses: ./.github/workflows/install_ruby.yml  
-  install-rake:
-    needs: install-ruby
-    uses: ./.github/workflows/install_rake.yml
   run-ui-tests:
-    needs: [install-mysql, install-rake]
     runs-on: ubuntu-latest
     steps:
-      - run: bundle exec rake circle:run_tests --trace
+      - name: install-mysql
+        uses: ./.github/workflows/install_mysql.yml
+      - name: install-ruby
+        uses: ./.github/workflows/install_ruby.yml  
+      - name: install-rake
+        uses: ./.github/workflows/install_rake.yml
+      - name: run-ui-tests
+        run: bundle exec rake circle:run_tests --trace
   printing-exit:
+    needs: run-ui-tests
     runs-on: ubuntu-latest
     steps:
       - run: echo "Good bye"

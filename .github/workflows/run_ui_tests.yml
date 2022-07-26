@@ -4,7 +4,10 @@ on:
 jobs:
   install-mysql:
     uses: ./.github/workflows/install_mysql.yml
+  install-ruby:
+    uses: ./.github/workflows/install_ruby.yml  
   install-rake:
+    needs: install-ruby
     uses: ./.github/workflows/install_rake.yml
   run-ui-tests:
     needs: [install-mysql, install-rake]

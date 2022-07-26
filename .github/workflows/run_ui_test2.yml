@@ -16,6 +16,9 @@ jobs:
       - name: Set mysql root password
         run: echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';" | sudo mysql -uroot -proot
 
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
       - name: Setup locals
         run: |
           chmod +x docker/setup_unit_tests_locals.sh
@@ -27,8 +30,7 @@ jobs:
           ruby-version: 2.5
           bundler-cache: true
           
-      - name: Checkout code
-        uses: actions/checkout@v3
+
         
       - name: Rake Install
         run: bundle exec rake install

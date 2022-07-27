@@ -5,9 +5,5 @@ jobs:
   run-ui-tests:
     runs-on: ubuntu-latest
     steps:    
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Get actions code
-        uses: actions/checkout@v3
       - name: say-hello
         uses: ./.github/actions/hello_word

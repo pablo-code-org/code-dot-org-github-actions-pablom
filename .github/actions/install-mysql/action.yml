@@ -1,17 +1,18 @@
 name: MySQL installer  
 jobs:
-  description: 'Install a mysql instance for the tests to run'
-  using: "composite"  
-  build:
-    env:
-      CI: true
-      RAILS_ENV: test
-      RACK_ENV: test
-      DISABLE_SPRING: 1
-    steps:
-      - name: Start MySQL
-        run: sudo /etc/init.d/mysql start
-        shell: bash
-      - name: Set mysql root password
-        run: echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';" | sudo mysql -uroot -proot      
-        shell: bash
+  description: 'Install a mysql instance for the tests to run
+  runs:
+    using: "composite"  
+    build:
+      env:
+        CI: true
+        RAILS_ENV: test
+        RACK_ENV: test
+        DISABLE_SPRING: 1
+      steps:
+        - name: Start MySQL
+          run: sudo /etc/init.d/mysql start
+          shell: bash
+        - name: Set mysql root password
+          run: echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';" | sudo mysql -uroot -proot      
+          shell: bash

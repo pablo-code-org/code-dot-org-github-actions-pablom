@@ -8,4 +8,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: say-hello
-        uses: actions/hello_word_action.yml
+        uses: actions/hello_word_action@v1

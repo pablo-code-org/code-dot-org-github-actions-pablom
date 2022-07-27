@@ -1,6 +1,7 @@
 name: MySQL installer  
 jobs:
   description: 'Install a mysql instance for the tests to run'
+  using: "composite"  
   build:
     env:
       CI: true

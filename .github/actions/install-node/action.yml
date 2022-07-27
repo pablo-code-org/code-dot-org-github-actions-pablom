@@ -1,0 +1,19 @@
+name: Rake installer  
+jobs:
+  description: 'Node installer'
+  using: "composite"  
+  build:
+    steps:                      
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install libmagickwand-dev imagemagick ghostscript pdftk enscript          
+      # Infer node version from .nvmrc, courtesy of https://github.com/actions/setup-node/issues/32#issuecomment-539794249
+      - name: Read .nvmrc
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+        id: nvm
+        
+      - name: Use Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}

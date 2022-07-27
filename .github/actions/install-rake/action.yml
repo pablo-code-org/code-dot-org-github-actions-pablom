@@ -1,0 +1,9 @@
+name: Rake installer  
+jobs:
+  description: 'Install Rake'
+  using: "composite"  
+  build:
+    steps:
+      - name: Install Rake
+        run: bundle exec rake install
+        shell: bash        

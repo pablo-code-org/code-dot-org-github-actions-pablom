@@ -3,7 +3,7 @@ jobs:
   description: 'Install Rake'
   using: "composite"  
   build:
-    steps:
+    steps:              
       - name: Install Rake
         run: bundle exec rake install
         shell: bash        

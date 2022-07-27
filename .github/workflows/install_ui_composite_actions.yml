@@ -8,4 +8,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: say-hello
-        uses: .actions/hello_world@v1
+        uses: .actions/hello_world@main

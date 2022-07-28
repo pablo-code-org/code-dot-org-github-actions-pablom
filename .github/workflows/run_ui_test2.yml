@@ -69,7 +69,7 @@ jobs:
         run: bundle exec rake build
 
       - name: Rake run UI tests
-        run: bundle exec rake test:changed:dashboard --trace
+        run: bundle exec rake circle:run_ui_tests --trace
 
   printing-exit:
     needs: run-ui-tests

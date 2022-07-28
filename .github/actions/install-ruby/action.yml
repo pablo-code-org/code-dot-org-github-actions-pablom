@@ -10,5 +10,3 @@ runs:
       with:
         ruby-version: 2.5
         bundler-cache: true      
-      shell: bash        
-

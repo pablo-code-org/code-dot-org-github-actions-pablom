@@ -9,14 +9,14 @@ jobs:
         uses: actions/checkout@v3    
       - name: say-hello
         uses: ./.github/actions/hello_world        
+      - name: Install UI test variables
+        uses: ./.github/actions/install-ui-test-variables
+      - name: Install test variables
+        uses: ./.github/actions/test-variables-installer        
       - name: Install mysql
         uses: ./.github/actions/install-mysql
       - name: Install Ruby
         uses: ./.github/actions/install-ruby
-      - name: Install UI test variables
-        uses: ./.github/actions/install-ui-test-variables
-      - name: Install test variables
-        uses: ./.github/actions/test-variables-installer
       - name: Install node
         uses: ./.github/actions/install-node        
       - name: Rake Install

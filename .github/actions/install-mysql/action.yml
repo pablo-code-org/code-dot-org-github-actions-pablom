@@ -6,11 +6,6 @@ runs:
   using: "composite"  
   steps:
     - name: Environment variables
-      env:        
-        CI: true
-        RAILS_ENV: test
-        RACK_ENV: test
-        DISABLE_SPRING: 1
       run: echo "Environment variables were set up for MySQL"
       shell: bash    
     - name: Start MySQL

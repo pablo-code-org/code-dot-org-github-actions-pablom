@@ -5,10 +5,10 @@ jobs:
   run-ui-tests:
     runs-on: ubuntu-latest
     steps:    
-      - name: Install mysql
-        uses: ./.github/actions/install-mysql    
       - name: Get actions code
         uses: actions/checkout@v3    
+      - name: Install mysql
+        uses: ./.github/actions/install-mysql            
       - name: say-hello
         uses: ./.github/actions/hello_world        
       - name: Install UI test variables

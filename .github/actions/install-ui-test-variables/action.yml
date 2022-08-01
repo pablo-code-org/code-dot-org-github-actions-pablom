@@ -23,6 +23,6 @@ runs:
           export CIRCLE_NODE_INDEX=1
           export CIRCLE_TEST_REPORTS=/home/circleci/test_reports
           export CIRCLE_ARTIFACTS=/home/circleci/artifacts
-
+          sudo mkdir -p $CIRCLE_TEST_REPORTS/cucumber
           sudo mkdir -p $CIRCLE_ARTIFACTS    
       shell: bash          

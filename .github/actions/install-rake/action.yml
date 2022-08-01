@@ -7,3 +7,6 @@ runs:
     - name: Install Rake
       run: bundle exec rake install
       shell: bash
+    - name: Build rake
+      run: bundle exec rake build
+      shell: bash

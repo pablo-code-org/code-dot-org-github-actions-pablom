@@ -9,6 +9,8 @@ jobs:
       RAILS_ENV: test
       RACK_ENV: test
       DISABLE_SPRING: 1    
+      CIRCLE_NODE_INDEX: 1
+      CIRCLE_NODE_TOTAL: 1
     steps:    
       - name: Get actions code
         uses: actions/checkout@v3    

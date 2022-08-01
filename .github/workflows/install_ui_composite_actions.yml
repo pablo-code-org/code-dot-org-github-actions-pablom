@@ -11,8 +11,6 @@ jobs:
         uses: ./.github/actions/hello_world        
       - name: Install mysql
         uses: ./.github/actions/install-mysql                    
-      - name: Install UI test variables
-        uses: ./.github/actions/install-ui-test-variables
       - name: Install test variables
         uses: ./.github/actions/test-variables-installer        
       - name: Install Ruby

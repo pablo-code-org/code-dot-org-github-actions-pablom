@@ -7,10 +7,10 @@ jobs:
     steps:    
       - name: Get actions code
         uses: actions/checkout@v3    
-      - name: Install mysql
-        uses: ./.github/actions/install-mysql            
       - name: say-hello
         uses: ./.github/actions/hello_world        
+      - name: Install mysql
+        uses: ./.github/actions/install-mysql                    
       - name: Install UI test variables
         uses: ./.github/actions/install-ui-test-variables
       - name: Install test variables

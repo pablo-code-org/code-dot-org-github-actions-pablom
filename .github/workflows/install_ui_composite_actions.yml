@@ -18,8 +18,8 @@ jobs:
       - name: Install node
         uses: ./.github/actions/install-node        
       - name: Rake Install
-        run: bundle exec rake install
+        run: bundle exec rake install --trace
       - name: Rake Build
-        run: bundle exec rake build
+        run: bundle exec rake build --trace
       - name: Rake run UI tests
         run: bundle exec rake circle:run_ui_tests --trace

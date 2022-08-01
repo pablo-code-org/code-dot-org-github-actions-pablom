@@ -16,4 +16,10 @@ jobs:
       - name: Install test variables
         uses: ./.github/actions/test-variables-installer
       - name: Install node
-        uses: ./.github/actions/install-node
+        uses: ./.github/actions/install-node        
+      - name: Rake Install
+        run: bundle exec rake install
+      - name: Rake Build
+        run: bundle exec rake build
+      - name: Rake run UI tests
+        run: bundle exec rake circle:run_ui_tests --trace

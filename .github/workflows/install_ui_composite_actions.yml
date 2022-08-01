@@ -22,5 +22,5 @@ jobs:
         uses: ./.github/actions/install-ruby
       - name: Install node
         uses: ./.github/actions/install-node        
-      - name: Install node
+      - name: Install rake
         uses: ./.github/actions/install-rake

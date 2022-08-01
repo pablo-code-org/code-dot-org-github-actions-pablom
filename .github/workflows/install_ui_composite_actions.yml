@@ -8,7 +8,7 @@ jobs:
       - name: Get actions code
         uses: actions/checkout@v3    
       - name: say-hello
-        uses: ./.github/actions/hello_word        
+        uses: ./.github/actions/hello_world        
       - name: Install mysql
         uses: ./.github/actions/install-mysql
       - name: Install Ruby

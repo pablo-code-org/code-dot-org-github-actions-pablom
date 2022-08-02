@@ -36,7 +36,7 @@ jobs:
           CIRCLE_NODE_TOTAL: 1
           CIRCLECI: true
           LD_LIBRARY_PATH: /usr/local/lib
-          CIRCLE_BUILD_NUM: ${DRONE_BUILD_NUMBER:-$RANDOM$RANDOM}
+          CIRCLE_BUILD_NUM: "42:-2323"
           CIRCLE_TEST_REPORTS: /home/circleci/test_reports
           CIRCLE_ARTIFACTS: /home/circleci/artifacts
         run: bundle exec rake circle:run_ui_tests --trace

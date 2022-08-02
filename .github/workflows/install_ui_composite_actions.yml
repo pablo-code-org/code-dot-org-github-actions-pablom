@@ -8,12 +8,28 @@ jobs:
       CI: true
       RAILS_ENV: test
       RACK_ENV: test
-      DISABLE_SPRING: 1    
+      DISABLE_SPRING: 1   
+      SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+      SAUCE_ACCESS_KEY:  ${{ secrets.SAUCE_ACCESS_KEY }}
     steps:    
       - name: Get actions code
         uses: actions/checkout@v3    
       - name: say-hello
         uses: ./.github/actions/hello_world        
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Read secrets from AWS Secrets Manager into environment variables
+        uses: abhilash1in/aws-secrets-manager-action@v2.1.0
+        with:
+          secrets: |
+            SAUCE_USERNAME
+            SAUCE_ACCESS_KEY
+          parse-json: true            
       - name: Install mysql
         uses: ./.github/actions/install-mysql                    
       - name: Install test variables

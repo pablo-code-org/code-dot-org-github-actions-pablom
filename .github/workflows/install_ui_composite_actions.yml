@@ -15,7 +15,7 @@ jobs:
       - name: Get actions code
         uses: actions/checkout@v3    
       - name: say-hello
-        uses: ./.github/actions/start-job-check              
+        uses: ./.github/actions/start-job-server-actions           
       - name: Install mysql
         uses: ./.github/actions/install-mysql                    
       - name: Install test variables
@@ -28,8 +28,8 @@ jobs:
         uses: ./.github/actions/install-apt-packages
       - name: Install node
         uses: ./.github/actions/install-node        
-      - name: Install rake
-        uses: ./.github/actions/install-rake
+      - name: Install rake dependencies 
+        uses: ./.github/actions/install-rake-dependencies
       - name: Rake run UI tests
         env: 
           CI: true

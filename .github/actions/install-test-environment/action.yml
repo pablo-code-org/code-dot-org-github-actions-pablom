@@ -4,7 +4,6 @@ description: 'Install the packages needed to run rake tests for unit test and UI
 runs:  
   using: "composite"  
   steps:    
-    env:        
     - name: Get actions code
       uses: actions/checkout@v3    
     - name: say-hello

@@ -1,0 +1,29 @@
+name: Install test packages and environment  
+jobs:
+description: 'Install the packages needed to run rake tests for unit test and UI tests'
+runs:
+  using: "composite"  
+  env:        
+    CI: true
+    RAILS_ENV: test
+    RACK_ENV: test
+    DISABLE_SPRING: 1   
+  steps:    
+    - name: Get actions code
+      uses: actions/checkout@v3    
+    - name: say-hello
+      uses: ./.github/actions/start-job-server-actions           
+    - name: Install mysql
+      uses: ./.github/actions/install-mysql                    
+    - name: Install test variables
+      uses: ./.github/actions/test-variables-installer      
+    - name: Install test variables
+      uses: ./.github/actions/install-ui-test-variables              
+    - name: Install Ruby
+      uses: ./.github/actions/install-ruby
+    - name: Install apt packages
+      uses: ./.github/actions/install-apt-packages
+    - name: Install node
+      uses: ./.github/actions/install-node        
+    - name: Install rake dependencies 
+      uses: ./.github/actions/install-rake-dependencies

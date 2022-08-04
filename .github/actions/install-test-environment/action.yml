@@ -1,14 +1,10 @@
 name: Install test packages and environment  
 jobs:
 description: 'Install the packages needed to run rake tests for unit test and UI tests'
-runs:
+runs:  
   using: "composite"  
-  env:        
-    CI: true
-    RAILS_ENV: test
-    RACK_ENV: test
-    DISABLE_SPRING: 1   
   steps:    
+    env:        
     - name: Get actions code
       uses: actions/checkout@v3    
     - name: say-hello

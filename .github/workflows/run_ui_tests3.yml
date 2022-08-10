@@ -5,6 +5,8 @@ jobs:
   run-ui-tests:
     runs-on: ubuntu-latest
     steps:    
+      - name: Get actions code
+        uses: actions/checkout@v3    
       - name: install-test-pre-requisites
         uses: ./.github/workflows/install_test_requirements.yml
       - name: Rake run UI tests

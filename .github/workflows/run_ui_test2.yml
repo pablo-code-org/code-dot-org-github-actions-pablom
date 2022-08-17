@@ -1,4 +1,4 @@
-name: Run UI tests 2
+name: Test ssh
 on:
   workflow_dispatch:
 jobs:
@@ -9,91 +9,7 @@ jobs:
       RAILS_ENV: test
       RACK_ENV: test
       DISABLE_SPRING: 1
-      
     steps:    
-      - name: Start MySQL
-        run: sudo /etc/init.d/mysql start
-      - name: Set mysql root password
-        run: echo "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';" | sudo mysql -uroot -proot
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Setup Circle variables
-        run: |
-          set -xe
-          ulimit -n 4096
-          export CI=true
-          export CIRCLECI=true
-          export RAILS_ENV=test
-          export RACK_ENV=test
-          export DISABLE_SPRING=1
-          export LD_LIBRARY_PATH=/usr/local/lib
-          # If running on Drone.io, DRONE_BUILD_NUMBER will be set: https://docs.drone.io/reference/environ/drone-build-number/
-          # otherwise, use a random number instead. CIRCLE_BUILD_NUM determines where UI test cucumber logs are stored in S3.
-          export CIRCLE_BUILD_NUM=${DRONE_BUILD_NUMBER:-$RANDOM$RANDOM}
-          export CIRCLE_NODE_INDEX=1
-          export CIRCLE_TEST_REPORTS=/home/circleci/test_reports
-          export CIRCLE_ARTIFACTS=/home/circleci/artifacts
-
-          sudo mkdir -p $CIRCLE_ARTIFACTS
-
-          # rbenv-doctor https://github.com/rbenv/rbenv-installer#readme
-          curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
-          
-      - name: Setup locals
-        run: |        
-          echo "
-          bundler_use_sudo: false
-          cloudfront_key_pair_id: $CLOUDFRONT_KEY_PAIR_ID
-          cloudfront_private_key: \"$CLOUDFRONT_PRIVATE_KEY\"
-          ignore_eyes_mismatches: true
-          disable_all_eyes_running: true
-          use_my_apps: true
-          build_dashboard: true
-          build_pegasus: true
-          build_apps: true
-          localize_apps: true
-          dashboard_enable_pegasus: true
-          dashboard_workers: 5
-          skip_seed_all: true
-          optimize_webpack_assets: false
-          optimize_rails_assets: false
-          google_maps_api_key: boguskey
-          dashboard_db_reader: \"mysql://readonly@localhost/dashboard_test\"
-          " >> locals.yml
-
-          
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@8f312efe1262fb463d906e9bf040319394c18d3e # v1.92
-        with:
-          ruby-version: 2.5
-          bundler-cache: true
-          
-      - name: Install packages
-        run: |
-          sudo apt-get update
-          sudo apt-get -y install libmagickwand-dev imagemagick ghostscript pdftk enscript          
-
-      # Infer node version from .nvmrc, courtesy of https://github.com/actions/setup-node/issues/32#issuecomment-539794249
-      - name: Read .nvmrc
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-        id: nvm
-      - name: Use Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-          
-      - name: Rake Install
-        run: bundle exec rake install
-
-      - name: Rake Build
-        run: bundle exec rake build
-
-      - name: Rake run UI tests
-        run: bundle exec rake circle:run_ui_tests --trace
-
-  printing-exit:
-    needs: run-ui-tests
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Good bye"
+      - uses: actions/checkout@v2
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3  
